@@ -9,9 +9,9 @@ class PulseSpider(scrapy.Spider):
     name = 'pulse'
     allowed_domains = ['pulse.lk']
     start_urls = ['https://www.pulse.lk/everythingelse/list-for-recyclers-in-sri-lanka/']
-    cred = credentials.Certificate('[SERVICEKEY.json]]')
+    cred = credentials.Certificate('[FIREBASE SERVICE FILE]')
     firebase_admin.initialize_app(cred, {
-        'databaseURL' : '[FIREBASE DATABSE URL]'
+        'databaseURL' : '[FIREBASE URL]'
     })
    
     def parse(self, response):
@@ -45,7 +45,8 @@ class PulseSpider(scrapy.Spider):
                                 tr_val["address"] = span[1]
                                 tr_val["city"] = span[1].split(" ")[len(span[1].split(" ")) - 1]
                             elif td_id == 3:
-                                tr_val["collectableMaterials"].append({"collectable_material":span[1]})
+                                for material in span[1].split("/"):
+                                    tr_val["collectableMaterials"].append({"collectable_material":material})
                     print(tr_val)
                     entries.append(tr_val)
                     
