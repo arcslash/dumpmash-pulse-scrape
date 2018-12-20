@@ -1,7 +1,5 @@
 # DumpMash Collection Points Scrape from Pulse
-
-Change the servicekey location and firebase database location in the [pulse.py](pulselocations/spiders/pulse.py)
-Lines 12[FIREBASE SERVICE FILE] and 14[FIREBASE DB URL]
+Scrape garbage collection point location information from pulse article.
 
 ## Useage
 
@@ -13,11 +11,12 @@ pip install firebase_admin
 
 
 ```
-
+clone the repository and make the necessary changes in the [pulse.py](pulselocations/spiders/pulse.py)
+Lines 12 [channge to firebase service file json ] and 14 [replace with firebase database]
 ```
-    git clone https://github.com/isharaux/dumpmash-pulse-scrape.git
-    cd dumpmash-pulse-scrape
-    python scrapy crawl pulse
+git clone https://github.com/isharaux/dumpmash-pulse-scrape.git
+cd dumpmash-pulse-scrape
+python scrapy crawl pulse
 
 ```
 
